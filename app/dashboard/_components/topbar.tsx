@@ -67,7 +67,7 @@ function MobileNav({ role, pathname }: { role: string; pathname: string }) {
       <SheetContent side="left" className="w-[300px] p-0 flex flex-col bg-app-surface border-r-app-border">
         <div className="flex items-center gap-3 p-6 border-b border-app-border">
           <div className="w-12 h-12 rounded-2xl bg-app-bg border border-brand/30 flex items-center justify-center p-2">
-            <Image src="/aceslogo.png" alt="ACES" width={32} height={32} className="object-contain" priority />
+            <Image src="/ac.png" alt="Institutional Logo" width={32} height={32} className="object-contain" priority />
           </div>
           <div>
             <p className="text-base font-bold text-app-text leading-tight tracking-tight">OBE System</p>

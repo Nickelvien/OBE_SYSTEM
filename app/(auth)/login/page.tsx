@@ -27,7 +27,7 @@ export default function LoginPage() {
           <div className="flex items-center gap-4">
             <div className="relative w-14 h-14 bg-app-bg border border-brand/30 rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.15)] group overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-brand/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <Image src="/aceslogo.png" alt="ACES Logo" width={38} height={38} className="object-contain relative z-10 transition-transform duration-500 group-hover:scale-110" priority />
+              <Image src="/ac.png" alt="Institutional Logo" width={38} height={38} className="object-contain relative z-10 transition-transform duration-500 group-hover:scale-110" priority />
             </div>
             <div>
               <h1 className="text-2xl font-bold tracking-tight text-app-text flex items-center gap-2">
@@ -87,7 +87,7 @@ export default function LoginPage() {
           {/* Mobile Branding */}
           <div className="lg:hidden flex flex-col items-center text-center mb-10">
             <div className="relative w-16 h-16 bg-app-surface border border-brand/30 rounded-2xl flex items-center justify-center shadow-xl mb-4">
-              <Image src="/aceslogo.png" alt="ACES Logo" width={42} height={42} className="object-contain" priority />
+              <Image src="/ac.png" alt="Institutional Logo" width={42} height={42} className="object-contain" priority />
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-app-text">Sign In</h1>
             <p className="text-sm text-brand font-mono mt-1 uppercase tracking-wider">OBE System</p>

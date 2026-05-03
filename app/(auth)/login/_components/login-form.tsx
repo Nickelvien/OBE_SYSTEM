@@ -6,10 +6,27 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import { motion } from 'framer-motion'
 import { Eye, EyeOff, Mail, Lock, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+}
+
+const item = {
+  hidden: { opacity: 0, y: 10 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } }
+}
 
 const loginSchema = z.object({
   email: z.string().email('Please enter a valid email address.'),
@@ -58,9 +75,16 @@ export function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
+    <motion.form 
+      variants={container}
+      initial="hidden"
+      animate="show"
+      onSubmit={handleSubmit(onSubmit)} 
+      className="space-y-5" 
+      noValidate
+    >
       {/* Email */}
-      <div className="space-y-2">
+      <motion.div variants={item} className="space-y-2">
         <Label htmlFor="email">Email address</Label>
         <div className="relative">
           <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/50" />
@@ -76,10 +100,10 @@ export function LoginForm() {
         {errors.email && (
           <p className="text-xs text-destructive">{errors.email.message}</p>
         )}
-      </div>
+      </motion.div>
 
       {/* Password */}
-      <div className="space-y-2">
+      <motion.div variants={item} className="space-y-2">
         <Label htmlFor="password">Password</Label>
         <div className="relative">
           <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/50" />
@@ -104,37 +128,43 @@ export function LoginForm() {
         {errors.password && (
           <p className="text-xs text-destructive">{errors.password.message}</p>
         )}
-      </div>
+      </motion.div>
 
       {/* Error */}
       {error && (
-        <div className="flex items-center gap-2.5 p-3 rounded-xl bg-destructive/10 border border-destructive/20 text-destructive text-sm animate-slide-up">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="flex items-center gap-2.5 p-3 rounded-xl bg-destructive/10 border border-destructive/20 text-destructive text-sm"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4 flex-shrink-0">
             <circle cx="12" cy="12" r="10" />
             <line x1="12" y1="8" x2="12" y2="12" />
             <line x1="12" y1="16" x2="12.01" y2="16" />
           </svg>
           <span>{error}</span>
-        </div>
+        </motion.div>
       )}
 
       {/* Submit */}
-      <Button
-        id="login-submit-btn"
-        type="submit"
-        disabled={isPending}
-        className="w-full h-11 mt-2"
-        size="lg"
-      >
-        {isPending ? (
-          <span className="flex items-center gap-2">
-            <Loader2 className="w-4 h-4 animate-spin" />
-            Signing in…
-          </span>
-        ) : (
-          'Sign in'
-        )}
-      </Button>
-    </form>
+      <motion.div variants={item}>
+        <Button
+          id="login-submit-btn"
+          type="submit"
+          disabled={isPending}
+          className="w-full h-11 mt-2"
+          size="lg"
+        >
+          {isPending ? (
+            <span className="flex items-center gap-2">
+              <Loader2 className="w-4 h-4 animate-spin" />
+              Signing in…
+            </span>
+          ) : (
+            'Sign in'
+          )}
+        </Button>
+      </motion.div>
+    </motion.form>
   )
 }

@@ -86,7 +86,7 @@ export function Sidebar({ role, userName }: { role: string; userName: string; us
             whileTap={{ scale: 0.95 }}
             className="w-12 h-12 rounded-2xl bg-app-bg border border-brand/30 flex items-center justify-center flex-shrink-0 shadow-[0_0_15px_rgba(16,185,129,0.1)] group-hover:border-brand transition-all p-1.5"
           >
-            <Image src="/aceslogo.png" alt="ACES" width={32} height={32} className="object-contain" priority />
+            <Image src="/ac.png" alt="Institutional Logo" width={32} height={32} className="object-contain" priority />
           </motion.div>
           <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-brand border-[3px] border-app-surface" />
         </Link>
