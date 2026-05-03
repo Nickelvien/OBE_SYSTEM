@@ -13,38 +13,38 @@
 |---|---|
 | **Started** | — |
 | **Target Demo Date** | — |
-| **Current Phase** | Phase 2 - Admin Panel & User Management |
+| **Current Phase** | Phase 1 — Not Started |
 | **Build Health** | `tsc --noEmit` ⬜ · `vitest run` ⬜ · `npm run build` ⬜ |
 
 ---
 
 ## PHASE TRACKER
 
-### ✅ Phase 1 — Foundation & Database
-- [x] `package.json` — all dependencies installed
-- [x] `tsconfig.json` — strict mode, path aliases configured
-- [x] `prisma/schema.prisma` — Panabo schema (no campus_id on tenant tables)
-- [x] `prisma/seed.ts` — 7 roles seeded, 2 departments, 2 programs, 1 period
-- [x] `lib/db.ts` — Prisma singleton
-- [x] `lib/db-rls.ts` — `withRLS(userId, role, fn)` — no campusId param
-- [x] `lib/auth.ts` — Auth.js v5 with Prisma adapter
-- [x] `lib/auth-helpers.ts` — `requireAuth(allowedRoles?)`
-- [x] `lib/audit.ts` — `auditLog(tx, params)`
-- [x] `lib/inngest.ts` — Inngest client
-- [x] `types/auth.ts` — session type augmentation
-- [x] `middleware.ts` — route protection + accreditor expiry check
-- [x] `next.config.js` — CSP headers
-- [x] `app/(auth)/login/` — login page + form component
-- [x] `app/(dashboard)/layout.tsx` — sidebar, "ACES Panabo" header (no campus switcher)
-- [x] `app/api/auth/[...nextauth]/route.ts`
-- [x] `app/api/inngest/route.ts`
-- [x] `vitest.config.ts` + `playwright.config.ts` + `.env.example`
-- [x] `supabase/migrations/001_rls_base.sql` — RLS, role-based policies
+### ⬜ Phase 1 — Foundation & Database
+- [ ] `package.json` — all dependencies installed
+- [ ] `tsconfig.json` — strict mode, path aliases configured
+- [ ] `prisma/schema.prisma` — Panabo schema (no campus_id on tenant tables)
+- [ ] `prisma/seed.ts` — 7 roles seeded, 2 departments, 2 programs, 1 period
+- [ ] `lib/db.ts` — Prisma singleton
+- [ ] `lib/db-rls.ts` — `withRLS(userId, role, fn)` — no campusId param
+- [ ] `lib/auth.ts` — Auth.js v5 with Prisma adapter
+- [ ] `lib/auth-helpers.ts` — `requireAuth(allowedRoles?)`
+- [ ] `lib/audit.ts` — `auditLog(tx, params)`
+- [ ] `lib/inngest.ts` — Inngest client
+- [ ] `types/auth.ts` — session type augmentation
+- [ ] `middleware.ts` — route protection + accreditor expiry check
+- [ ] `next.config.js` — CSP headers
+- [ ] `app/(auth)/login/` — login page + form component
+- [ ] `app/(dashboard)/layout.tsx` — sidebar, "ACES Panabo" header (no campus switcher)
+- [ ] `app/api/auth/[...nextauth]/route.ts`
+- [ ] `app/api/inngest/route.ts`
+- [ ] `vitest.config.ts` + `playwright.config.ts` + `.env.example`
+- [ ] `supabase/migrations/001_rls_base.sql` — RLS, role-based policies
 
 **Acceptance Gate:**
-- [x] `npm run build` — zero errors
-- [x] `npx prisma db seed` — succeeds
-- [x] Login works for all 7 roles
+- [ ] `npm run build` — zero errors
+- [ ] `npx prisma db seed` — succeeds
+- [ ] Login works for all 7 roles
 
 **Session Notes:**
 ```

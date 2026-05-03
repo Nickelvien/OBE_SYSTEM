@@ -1,0 +1,19 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "deepseek": {
+      "name": "DeepSeek",
+      "options": {
+        "baseURL": "https://api.deepseek.com/v1",
+        "apiKey": "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"
+      },
+      "models": {
+        "deepseek-chat": { "name": "DeepSeek V3" },
+        "deepseek-reasoner": { "name": "DeepSeek R1" },
+        "deepseek-v4-flash": { "name": "deepseek-v4-flash" },
+        "deepseek-v4-pro": { "name": "deepseek-v4-pro" }
+      }
+    }
+  },
+  "model": "deepseek/deepseek-v4-pro"
+}
