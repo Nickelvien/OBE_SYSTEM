@@ -1,3 +1,4 @@
+﻿// app/(auth)/login/_components/login-form.tsx
 'use client'
 
 import { useState, useTransition } from 'react'
@@ -6,38 +7,16 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { motion } from 'framer-motion'
 import { Eye, EyeOff, Mail, Lock, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2
-    }
-  }
-}
-
-const item = {
-  hidden: { opacity: 0, y: 10 },
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } as any }
-}
-
 const loginSchema = z.object({
   email: z.string().email('Please enter a valid email address.'),
   password: z
     .string()
-    .min(8, 'Password must be at least 8 characters.')
-    .regex(/[a-z]/, 'Must contain a lowercase letter.')
-    .regex(/[A-Z]/, 'Must contain an uppercase letter.')
-    .regex(/\d/, 'Must contain a number.')
-    .regex(/[\W_]/, 'Must contain a special character.'),
+    .min(1, 'Password is required.'),
 })
 
 type LoginFormValues = z.infer<typeof loginSchema>
@@ -76,124 +55,87 @@ export function LoginForm() {
   }
 
   return (
-    <motion.form 
-      variants={container}
-      initial="hidden"
-      animate="show"
+    <form 
       onSubmit={handleSubmit(onSubmit)} 
-      className="space-y-5" 
+      className="space-y-6" 
       noValidate
     >
       {/* Email */}
-      <motion.div variants={item} className="space-y-2">
-        <Label htmlFor="email" className="text-sm font-medium text-white">Email address</Label>
-        <div className="relative group">
-          <div className="absolute inset-0 bg-brand/20 blur-md rounded-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-500" />
-          <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 group-focus-within:text-brand transition-colors z-10" />
+      <div className="space-y-2">
+        <Label htmlFor="email" className="text-[14px] font-medium text-[#F8FAFC]">Email address</Label>
+        <div className="relative">
+          <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#64748B]" />
           <Input
             id="email"
             type="email"
             autoComplete="email"
             placeholder="you@panabo.aces.edu.ph"
-            className="pl-10 h-12 bg-[#020617]/50 border-[rgba(255,255,255,0.08)] text-[#F8FAFC] placeholder:text-[#94A3B8]/60 focus:border-[#10B981] focus:ring-1 focus:ring-[#10B981] transition-all relative z-10 rounded-xl"
+            className="pl-11 h-[52px] bg-[#141416] border-[#27272A] text-[#F8FAFC] placeholder:text-[#3F3F46] focus:border-[#10B981] focus:ring-1 focus:ring-[#10B981] transition-all rounded-[12px]"
             {...register('email')}
           />
         </div>
         {errors.email && (
-          <p className="text-xs text-destructive">{errors.email.message}</p>
+          <p className="text-xs text-red-500">{errors.email.message}</p>
         )}
-      </motion.div>
+      </div>
 
       {/* Password */}
-      <motion.div variants={item} className="space-y-2">
+      <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <Label htmlFor="password" className="text-sm font-medium text-white">Password</Label>
+          <Label htmlFor="password" className="text-[14px] font-medium text-[#F8FAFC]">Password</Label>
+          <a href="#" className="text-[11px] text-[#10B981] hover:text-[#34D399] transition-colors tracking-widest font-semibold uppercase">
+            Forgot?
+          </a>
         </div>
-        <div className="relative group">
-          <div className="absolute inset-0 bg-brand/20 blur-md rounded-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-500" />
-          <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 group-focus-within:text-brand transition-colors z-10" />
+        <div className="relative">
+          <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#64748B]" />
           <Input
             id="password"
             type={showPassword ? 'text' : 'password'}
             autoComplete="current-password"
             placeholder="••••••••"
-            className="pl-10 pr-10 h-12 bg-[#020617]/50 border-[rgba(255,255,255,0.08)] text-[#F8FAFC] placeholder:text-[#94A3B8]/60 focus:border-[#10B981] focus:ring-1 focus:ring-[#10B981] transition-all relative z-10 rounded-xl"
+            className="pl-11 pr-11 h-[52px] bg-[#141416] border-[#27272A] text-[#F8FAFC] placeholder:text-[#3F3F46] focus:border-[#10B981] focus:ring-1 focus:ring-[#10B981] transition-all rounded-[12px] font-medium tracking-widest"
             {...register('password')}
           />
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute inset-y-0 right-0 pr-3 flex items-center text-white/40 hover:text-white transition-colors z-10"
+            className="absolute inset-y-0 right-1 pr-3 flex items-center text-[#64748B] hover:text-[#94A3B8] transition-colors"
             tabIndex={-1}
-            aria-label={showPassword ? 'Hide password' : 'Show password'}
           >
             {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
           </button>
         </div>
         {errors.password && (
-          <p className="text-xs text-destructive">{errors.password.message}</p>
+          <p className="text-xs text-red-500">{errors.password.message}</p>
         )}
-      </motion.div>
-
-      {/* Remember me & Forgot Password */}
-      <motion.div variants={item} className="flex items-center justify-between">
-        <label className="flex items-center gap-2 cursor-pointer group">
-          <div className="relative w-4 h-4 rounded bg-white/5 border border-white/20 group-hover:border-[#10B981]/50 transition-colors flex items-center justify-center">
-            <input type="checkbox" className="peer absolute opacity-0 w-0 h-0" defaultChecked />
-            <svg className="w-3 h-3 text-[#10B981] opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <span className="text-xs text-[#94A3B8] font-medium">Remember me</span>
-        </label>
-        <a href="#" className="text-xs font-semibold text-[#10B981] hover:text-emerald-400 transition-colors">
-          Forgot password?
-        </a>
-      </motion.div>
+      </div>
 
       {/* Error */}
       {error && (
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="flex items-center gap-2.5 p-3 rounded-xl bg-destructive/10 border border-destructive/20 text-destructive text-sm"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4 flex-shrink-0">
-            <circle cx="12" cy="12" r="10" />
-            <line x1="12" y1="8" x2="12" y2="12" />
-            <line x1="12" y1="16" x2="12.01" y2="16" />
-          </svg>
+        <div className="flex items-center gap-2.5 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 text-sm">
           <span>{error}</span>
-        </motion.div>
+        </div>
       )}
 
       {/* Submit */}
-      <motion.div variants={item} className="pt-2">
+      <div className="pt-2">
         <Button
           id="login-submit-btn"
           type="submit"
           disabled={isPending}
-          className="w-full h-[52px] rounded-xl bg-gradient-to-r from-emerald-500 to-[#10B981] text-white hover:from-emerald-400 hover:to-emerald-500 font-bold tracking-wide shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all duration-300 relative overflow-hidden group border-0"
-          size="lg"
+          className="w-full h-[52px] rounded-[14px] bg-[#10B981] text-[#020617] hover:bg-[#059669] font-bold text-[15px] tracking-wide transition-colors border-0"
         >
-          <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
-          <span className="relative z-10 flex items-center justify-center gap-2">
-            {isPending ? (
-              <>
-                <Loader2 className="w-5 h-5 animate-spin" />
-                <span>Authenticating…</span>
-              </>
-            ) : (
-              <>
-                <span>Sign In Securely</span>
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </>
-            )}
-          </span>
+          {isPending ? (
+            <span className="flex items-center gap-2">
+              <Loader2 className="w-5 h-5 animate-spin" />
+              Authenticating...
+            </span>
+          ) : (
+            'Secure Sign In'
+          )}
         </Button>
-      </motion.div>
-    </motion.form>
+      </div>
+    </form>
   )
 }
