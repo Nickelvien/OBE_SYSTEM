@@ -181,7 +181,7 @@ export function Sidebar({ role, userName }: { role: string; userName: string; us
               <div className="min-w-0">
                 <p className="text-[13px] font-bold text-app-text truncate leading-tight tracking-tight">{userName}</p>
                 <div className={cn("inline-block mt-1 px-2 py-0.5 rounded-full border text-[9px] font-bold uppercase tracking-wider", roleBadgeVariant[role])}>
-                  {role.replace(/_/g, ' ')}
+                  {role === 'super_admin' ? 'Admin' : role.replace(/_/g, ' ')}
                 </div>
               </div>
             )}

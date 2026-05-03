@@ -87,14 +87,15 @@ export function LoginForm() {
       {/* Email */}
       <motion.div variants={item} className="space-y-2">
         <Label htmlFor="email">Email address</Label>
-        <div className="relative">
-          <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/50" />
+        <div className="relative group">
+          <div className="absolute inset-0 bg-brand/20 blur-md rounded-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-500" />
+          <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 group-focus-within:text-brand transition-colors z-10" />
           <Input
             id="email"
             type="email"
             autoComplete="email"
             placeholder="you@panabo.aces.edu.ph"
-            className="pl-10 h-11"
+            className="pl-10 h-12 bg-white/5 border-white/10 text-white placeholder:text-white/20 focus:border-brand focus:ring-1 focus:ring-brand transition-all relative z-10 rounded-xl"
             {...register('email')}
           />
         </div>
@@ -105,21 +106,27 @@ export function LoginForm() {
 
       {/* Password */}
       <motion.div variants={item} className="space-y-2">
-        <Label htmlFor="password">Password</Label>
-        <div className="relative">
-          <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/50" />
+        <div className="flex items-center justify-between">
+          <Label htmlFor="password">Password</Label>
+          <a href="#" className="text-[10px] text-brand hover:text-emerald-300 transition-colors uppercase tracking-widest font-mono">
+            Forgot?
+          </a>
+        </div>
+        <div className="relative group">
+          <div className="absolute inset-0 bg-brand/20 blur-md rounded-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-500" />
+          <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 group-focus-within:text-brand transition-colors z-10" />
           <Input
             id="password"
             type={showPassword ? 'text' : 'password'}
             autoComplete="current-password"
             placeholder="••••••••"
-            className="pl-10 pr-10 h-11"
+            className="pl-10 pr-10 h-12 bg-white/5 border-white/10 text-white placeholder:text-white/20 focus:border-brand focus:ring-1 focus:ring-brand transition-all relative z-10 rounded-xl"
             {...register('password')}
           />
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute inset-y-0 right-0 pr-3 flex items-center text-muted-foreground/50 hover:text-muted-foreground transition-colors"
+            className="absolute inset-y-0 right-0 pr-3 flex items-center text-white/40 hover:text-white transition-colors z-10"
             tabIndex={-1}
             aria-label={showPassword ? 'Hide password' : 'Show password'}
           >
@@ -148,22 +155,25 @@ export function LoginForm() {
       )}
 
       {/* Submit */}
-      <motion.div variants={item}>
+      <motion.div variants={item} className="pt-2">
         <Button
           id="login-submit-btn"
           type="submit"
           disabled={isPending}
-          className="w-full h-11 mt-2"
+          className="w-full h-12 rounded-xl bg-brand text-black hover:bg-emerald-400 font-bold tracking-wide shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all duration-300 relative overflow-hidden group"
           size="lg"
         >
-          {isPending ? (
-            <span className="flex items-center gap-2">
-              <Loader2 className="w-4 h-4 animate-spin" />
-              Signing in…
-            </span>
-          ) : (
-            'Sign in'
-          )}
+          <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+          <span className="relative z-10 flex items-center justify-center gap-2">
+            {isPending ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin" />
+                Authenticating…
+              </>
+            ) : (
+              'Secure Sign In'
+            )}
+          </span>
         </Button>
       </motion.div>
     </motion.form>

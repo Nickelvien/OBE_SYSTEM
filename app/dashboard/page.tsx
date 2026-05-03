@@ -118,7 +118,7 @@ export default async function DashboardPage() {
             <p className="text-app-muted text-sm font-medium opacity-80">{welcome}</p>
             <div className="h-1 w-1 rounded-full bg-app-border" />
             <Badge className="bg-brand/5 border-brand/20 text-brand text-[10px] font-bold uppercase tracking-widest px-3 py-1">
-              {role.replace(/_/g, ' ')}
+              {role === 'super_admin' ? 'Admin' : role.replace(/_/g, ' ')}
             </Badge>
           </div>
         </div>

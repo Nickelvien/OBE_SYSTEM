@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useState, useEffect, useCallback } from 'react'
 import { format } from 'date-fns'
@@ -132,7 +132,7 @@ export default function UsersPage() {
       key: 'role', header: 'Role', sortable: true,
       cell: (r) => (
         <Badge variant={roleBadgeVariant[r.role] ?? 'secondary'} className="capitalize text-[11px]">
-          {r.role.replace(/_/, ' ')}
+          {r.role === 'super_admin' ? 'Admin' : r.role.replace(/_/, ' ')}
         </Badge>
       ),
     },
@@ -215,7 +215,7 @@ export default function UsersPage() {
                     id="input-role"
                     value={form.role}
                     onChange={(e) => setForm((f) => ({ ...f, role: e.target.value }))}
-                    options={ROLES.map((r) => ({ value: r, label: r.replace(/_/g, ' ') }))}
+                    options={ROLES.map((r) => ({ value: r, label: r === 'super_admin' ? 'Admin' : r.replace(/_/g, ' ') }))}
                   />
                 </Field>
                 {form.role === 'accreditor' && (
