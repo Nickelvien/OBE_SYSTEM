@@ -5,28 +5,28 @@
 
 @layer base {
   :root {
-    --background: 225 11% 10%;
-    --foreground: 0 0% 100%;
-    --card: 225 11% 12%;
-    --card-foreground: 0 0% 100%;
-    --popover: 225 11% 14%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 85 84% 67%;
-    --primary-foreground: 225 11% 10%;
-    --secondary: 225 11% 18%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 225 11% 18%;
-    --muted-foreground: 215 16% 65%;
-    --accent: 85 84% 67%;
-    --accent-foreground: 225 11% 10%;
-    --destructive: 0 62% 45%;
+    --background: 0 0% 2%;    /* #050505 */
+    --foreground: 240 5% 96%; /* #F4F4F5 */
+    --card: 0 0% 7%;          /* #121212 */
+    --card-foreground: 240 5% 96%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 240 5% 96%;
+    --primary: 161 84% 39%;   /* #10B981 Emerald */
+    --primary-foreground: 0 0% 0%;
+    --secondary: 240 4% 16%;  /* #27272A */
+    --secondary-foreground: 240 5% 96%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 65%; /* #A1A1AA */
+    --accent: 161 84% 39%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
-    --border: 225 11% 20%;
-    --input: 225 11% 16%;
-    --ring: 85 84% 67%;
-    --radius: 0.75rem;
-    --sidebar-width: 260px;
-    --topbar-height: 3.5rem;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 161 84% 39%;
+    --radius: 1rem;
+    --sidebar-width: 280px;
+    --topbar-height: 4rem;
   }
 }
 
@@ -48,11 +48,11 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--border));
+    background: #27272A;
     border-radius: 10px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--muted-foreground) / 0.4);
+    background: #10B981;
   }
 }
 
@@ -70,12 +70,12 @@
     @apply bg-gradient-to-r from-primary via-green-300 to-emerald-400 bg-clip-text text-transparent;
   }
 
-  /* Subtle grid background */
+  /* Subtle emerald grid background */
   .bg-grid {
     background-image:
-      linear-gradient(rgba(182, 241, 99, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(182, 241, 99, 0.04) 1px, transparent 1px);
-    background-size: 48px 48px;
+      linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+    background-size: 32px 32px;
   }
 
   /* Page transition */

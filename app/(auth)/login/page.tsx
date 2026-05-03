@@ -1,125 +1,110 @@
 // app/(auth)/login/page.tsx
+'use client'
+
 import type { Metadata } from 'next'
+import Image from 'next/image'
+import { motion } from 'framer-motion'
 import { LoginFormWrapper } from './_components/login-form-wrapper'
-
-export const metadata: Metadata = {
-  title: 'Sign In — OBE Cycle Management System | ACES Panabo',
-  description: 'Sign in to the OBE Cycle Management System for ACES Polytechnic College, Panabo Campus.',
-}
-
-function FloatingOrb({ className, style }: { className?: string; style?: React.CSSProperties }) {
-  return (
-    <div
-      className={`absolute rounded-full opacity-20 blur-3xl animate-float ${className ?? ''}`}
-      style={{
-        background: 'radial-gradient(circle, rgba(182,241,99,0.4) 0%, transparent 70%)',
-        ...style,
-      }}
-    />
-  )
-}
 
 export default function LoginPage() {
   return (
-    <main className="min-h-screen flex bg-background overflow-hidden">
-      {/* Left: Branding Hero */}
-      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
-        {/* Background elements */}
-        <div className="absolute inset-0 bg-grid opacity-[0.08]" />
-        <FloatingOrb className="w-[600px] h-[600px] -top-40 -left-40" style={{ animationDelay: '0s' }} />
-        <FloatingOrb className="w-[400px] h-[400px] bottom-20 left-60" style={{ animationDelay: '2s' }} />
-        <FloatingOrb className="w-[300px] h-[300px] top-1/3 right-10" style={{ animationDelay: '4s' }} />
-
-        {/* Content */}
-        <div className="relative z-10 flex flex-col justify-between p-16 w-full">
-          {/* Top branding */}
-          <div>
-            <div className="flex items-center gap-4 mb-12">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-emerald-400 flex items-center justify-center shadow-2xl shadow-primary/30">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7 text-primary-foreground">
-                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                </svg>
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold text-white tracking-tight leading-none">OBE System</h1>
-                <p className="text-sm text-primary/80 mt-0.5">v2.0 · Panabo Campus</p>
-              </div>
-            </div>
-
-            <div className="max-w-md">
-              <h2 className="text-4xl font-bold text-white leading-tight tracking-tight mb-4">
-                Outcomes-Based
-                <br />
-                <span className="gradient-text">Education</span> Management
-              </h2>
-              <p className="text-lg text-slate-400 leading-relaxed">
-                Automate your full OBE cycle — from PEO/PLO/CLO mapping to attainment computation, CQI action plans, and accreditation-ready reports. Built for CHED & TESDA compliance.
-              </p>
-            </div>
-          </div>
-
-          {/* Feature pills */}
-          <div className="flex flex-wrap gap-3">
-            {[
-              { label: 'CHED CMO Compliant', icon: 'A' },
-              { label: 'TESDA TR Ready', icon: 'T' },
-              { label: 'RA 10173 Privacy', icon: 'P' },
-              { label: 'Real-time Attainment', icon: 'R' },
-            ].map((f) => (
-              <span
-                key={f.label}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.06] text-sm text-slate-300 backdrop-blur-sm"
-              >
-                <span className="w-5 h-5 rounded-full bg-primary/20 text-primary text-[10px] font-bold flex items-center justify-center">{f.icon}</span>
-                {f.label}
-              </span>
-            ))}
-          </div>
-
-          {/* Bottom text */}
-          <p className="text-xs text-slate-600">
-            ACES Polytechnic College · Panabo Campus · Davao Region XI, Philippines
-          </p>
-        </div>
+    <main className="min-h-screen flex bg-app-bg overflow-hidden relative">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-brand/10 blur-[120px] rounded-full animate-pulse-glow" />
+        <div className="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-brand/5 blur-[120px] rounded-full animate-pulse-glow" style={{ animationDelay: '1s' }} />
       </div>
 
-      {/* Right: Login Form */}
-      <div className="flex-1 flex items-center justify-center relative">
-        {/* Subtle grid for the form side too */}
-        <div className="absolute inset-0 bg-grid opacity-[0.04]" />
-
-        <div className="relative z-10 w-full max-w-md px-8 py-12">
-          {/* Mobile branding (shown only on small screens) */}
-          <div className="lg:hidden text-center mb-10">
-            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-emerald-400 mb-4 shadow-2xl shadow-primary/30">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7 text-primary-foreground">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                <path d="M6 12v5c3 3 9 3 12 0v-5" />
-              </svg>
+      {/* Left: Branding Hero */}
+      <motion.div 
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        className="hidden lg:flex lg:w-1/2 relative flex-col justify-between p-16 border-r border-app-border bg-app-surface/30 backdrop-blur-sm"
+      >
+        <div className="absolute inset-0 bg-grid opacity-20" />
+        
+        <div className="relative z-10">
+          <div className="flex items-center gap-4">
+            <div className="relative w-14 h-14 bg-app-bg border border-brand/30 rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.15)] group overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-brand/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <Image src="/aceslogo.png" alt="ACES Logo" width={38} height={38} className="object-contain relative z-10 transition-transform duration-500 group-hover:scale-110" priority />
             </div>
-            <h1 className="text-2xl font-bold text-white tracking-tight">OBE Cycle Management</h1>
-            <p className="text-primary/70 text-sm mt-1">ACES Polytechnic College · Panabo</p>
-          </div>
-
-          {/* Card */}
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent rounded-3xl -m-[1px]" />
-            <div className="relative bg-card border border-border rounded-3xl p-8 shadow-2xl">
-              <div className="mb-8">
-                <h2 className="text-xl font-bold text-white">Welcome back</h2>
-                <p className="text-muted-foreground text-sm mt-1">
-                  Sign in with your institutional email address.
-                </p>
-              </div>
-              <LoginFormWrapper />
+            <div>
+              <h1 className="text-2xl font-bold tracking-tight text-app-text">ACES Panabo</h1>
+              <p className="text-xs text-brand font-mono tracking-widest uppercase">OBE Cycle Management</p>
             </div>
           </div>
-
-          <p className="text-center text-muted-foreground/40 text-xs mt-8">
-            Secured with Auth.js v5 · SameSite Strict · JWT
-          </p>
         </div>
+
+        <div className="relative z-10 max-w-lg">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="text-5xl font-bold tracking-tight text-app-text mb-6 leading-[1.1]"
+          >
+            Empowering <span className="text-brand text-glow">Outcomes-Based</span> Education.
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="text-lg text-app-muted leading-relaxed mb-10 max-w-md"
+          >
+            A high-performance platform for PEO/PLO/CLO mapping, attainment tracking, and institutional compliance.
+          </motion.p>
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="flex flex-wrap gap-3"
+          >
+            {['CHED CMO Compliant', 'TESDA TR Ready', 'Institutional Data Security'].map((f) => (
+              <span key={f} className="inline-flex items-center px-4 py-1.5 rounded-full bg-brand/5 text-brand text-[11px] font-bold border border-brand/20 tracking-wide uppercase">
+                {f}
+              </span>
+            ))}
+          </motion.div>
+        </div>
+
+        <div className="relative z-10 text-[10px] text-app-muted/50 font-mono tracking-tighter uppercase">
+          &copy; {new Date().getFullYear()} ACES Polytechnic College · Internal Systems v2.0
+        </div>
+      </motion.div>
+
+      {/* Right: Login Form */}
+      <div className="flex-1 flex flex-col justify-center relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.7 }}
+          className="w-full max-w-[420px] mx-auto px-8"
+        >
+          {/* Mobile Branding */}
+          <div className="lg:hidden flex flex-col items-center text-center mb-10">
+            <div className="relative w-16 h-16 bg-app-surface border border-brand/30 rounded-2xl flex items-center justify-center shadow-xl mb-4">
+              <Image src="/aceslogo.png" alt="ACES Logo" width={42} height={42} className="object-contain" priority />
+            </div>
+            <h1 className="text-3xl font-bold tracking-tight text-app-text">Sign In</h1>
+            <p className="text-sm text-brand font-mono mt-1 uppercase tracking-wider">OBE System</p>
+          </div>
+
+          <div className="hidden lg:block mb-10">
+            <h2 className="text-3xl font-bold tracking-tight text-app-text">Authentication</h2>
+            <p className="text-sm text-app-muted mt-2">Enter your institutional credentials to proceed.</p>
+          </div>
+
+          <div className="bg-app-surface p-8 rounded-3xl border border-app-border shadow-2xl relative overflow-hidden group">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand to-transparent opacity-50" />
+            <LoginFormWrapper />
+          </div>
+
+          <p className="text-center text-app-muted/30 text-[10px] mt-10 font-mono tracking-widest uppercase">
+            Military-Grade Encryption · Auth.js v5 · ACES IT Security
+          </p>
+        </motion.div>
       </div>
     </main>
   )
