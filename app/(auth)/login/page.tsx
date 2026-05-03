@@ -30,7 +30,10 @@ export default function LoginPage() {
               <Image src="/aceslogo.png" alt="ACES Logo" width={38} height={38} className="object-contain relative z-10 transition-transform duration-500 group-hover:scale-110" priority />
             </div>
             <div>
-              <h1 className="text-2xl font-bold tracking-tight text-app-text">ACES Panabo</h1>
+              <h1 className="text-2xl font-bold tracking-tight text-app-text flex items-center gap-2">
+                ACES Panabo
+                <span className="text-[10px] bg-brand/10 text-brand px-2 py-0.5 rounded-full font-mono uppercase tracking-tighter border border-brand/20">v2.0</span>
+              </h1>
               <p className="text-xs text-brand font-mono tracking-widest uppercase">OBE Cycle Management</p>
             </div>
           </div>
