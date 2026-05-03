@@ -7,21 +7,21 @@ import { LoginFormWrapper } from './_components/login-form-wrapper'
 
 export default function LoginPage() {
   return (
-    <main className="h-[100dvh] w-full relative overflow-hidden text-slate-50 font-sans flex flex-col items-center justify-center">
+    <main className="min-h-[100dvh] w-full relative overflow-x-hidden overflow-y-auto text-slate-50 font-sans flex flex-col items-center justify-center">
       {/* Background Image (covers entire screen) */}
       <div className="absolute inset-0 z-0">
         <Image 
           src="/new.png" 
           alt="Campus Background" 
           fill 
-          className="object-cover object-center"
+          className="object-cover object-center fixed"
           priority
         />
-        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-black/70 fixed" />
       </div>
 
       {/* Main Container - Adjusted to center mobile purely, and use grid/flex structure for desktop */}
-      <div className="relative z-10 w-full h-full flex flex-col lg:flex-row items-center justify-center lg:justify-between px-4 sm:px-12 lg:px-16 2xl:px-24 gap-8 lg:gap-0 pb-16 lg:pb-0 pt-6 lg:pt-0">
+      <div className="relative z-10 w-full flex-1 flex flex-col lg:flex-row items-center justify-center lg:justify-between px-4 sm:px-12 lg:px-16 2xl:px-24 gap-8 lg:gap-0 pb-20 lg:pb-0 pt-8 lg:pt-0">
         
         {/* =========================================================================
             LEFT COLUMN (Desktop) / TOP STACK (Mobile) 
