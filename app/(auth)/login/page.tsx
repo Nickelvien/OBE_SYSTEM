@@ -11,7 +11,7 @@ export default function LoginPage() {
       {/* Background Image (covers entire screen) */}
       <div className="absolute inset-0 z-0">
         <Image 
-          src="/loginbg.png" 
+          src="/new.png" 
           alt="Campus Background" 
           fill 
           className="object-cover object-center"
@@ -31,8 +31,8 @@ export default function LoginPage() {
           {/* ---- MOBILE TOP SECTION ---- */}
           <div className="flex lg:hidden flex-col items-center w-full gap-2">
             <div className="flex flex-col items-center gap-2 mb-2 mt-2">
-              <div className="w-20 h-20 rounded-full overflow-hidden border border-white/20 bg-white flex items-center justify-center shadow-lg">
-                <Image src="/new.png" alt="School Logo" width={64} height={64} className="object-cover" priority />
+              <div className="w-16 h-16 rounded-full overflow-hidden border border-white/20 bg-white flex items-center justify-center shadow-lg">
+                <Image src="/ac.png" alt="School Logo" width={56} height={56} className="object-contain" priority />
               </div>
               <div className="flex flex-col items-center text-center">
                 <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white leading-tight drop-shadow-[0_0_8px_rgba(16,185,129,0.3)]">ACES Panabo</h1>
@@ -42,11 +42,11 @@ export default function LoginPage() {
 
             {/* Mobile-only Pills */}
             <div className="flex flex-row items-center gap-2 mb-3 w-full justify-center">
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm whitespace-nowrap">
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm whitespace-nowrap">
                 <ShieldCheck className="w-3 h-3 text-[#10B981]" />
                 <span className="text-[9px] sm:text-[10px] text-slate-100 font-medium tracking-wide uppercase">Secure Access</span>
               </div>
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm whitespace-nowrap">
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm whitespace-nowrap">
                 <Waypoints className="w-3 h-3 text-[#10B981]" />
                 <span className="text-[9px] sm:text-[10px] text-slate-100 font-medium tracking-wide uppercase">Curriculum Mapping</span>
               </div>
@@ -56,8 +56,8 @@ export default function LoginPage() {
           {/* ---- DESKTOP BRANDING (Top Left) ---- */}
           <div className="hidden lg:block w-full mb-12">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-24 h-24 rounded-full overflow-hidden border border-white/20 bg-white flex items-center justify-center shadow-lg">
-                <Image src="/new.png" alt="School Logo" width={80} height={80} className="object-cover" />
+              <div className="w-20 h-20 rounded-full overflow-hidden border border-white/20 bg-white flex items-center justify-center shadow-lg">
+                <Image src="/ac.png" alt="School Logo" width={64} height={64} className="object-contain" />
               </div>
               <div className="flex flex-col">
                 <span className="text-3xl font-bold tracking-tight text-white leading-tight drop-shadow-[0_0_8px_rgba(16,185,129,0.3)]">ACES Panabo</span>
@@ -110,10 +110,6 @@ export default function LoginPage() {
                 <div className="flex flex-col items-center gap-1.5 w-1/3">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#10B981]" />
                   <span className="text-[9px] sm:text-[10px] text-slate-300 font-medium">Faculty<br/>Verified Access</span>
-                  <div className="flex items-center gap-1.5 text-[#10B981] mt-2 bg-[#10B981]/10 px-2 py-1 rounded">
-                    <Lock className="w-3 h-3 flex-shrink-0" />
-                    <span className="text-[8px] font-bold tracking-[0.1em] uppercase text-white leading-tight">Military-Grade<br/>Encryption</span>
-                  </div>
                 </div>
                 <div className="flex flex-col items-center gap-1.5 w-1/3">
                   <Zap className="w-3.5 h-3.5 text-[#10B981]" />
@@ -130,9 +126,17 @@ export default function LoginPage() {
           GLOBAL FOOTER (Fixed at absolute bottom center)
           ========================================================================= */}
       <div className="absolute bottom-4 left-0 w-full text-center z-20 pointer-events-none">
-        <p className="text-slate-300 text-[10px] font-semibold tracking-wider font-mono drop-shadow-md">
-          &copy; 2026 ACES IT SECURITY
-        </p>
+        <div className="flex flex-col items-center justify-center gap-1.5">
+          <div className="flex items-center justify-center gap-1.5 text-[#10B981]">
+            <Lock className="w-4 h-4 flex-shrink-0" />
+            <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase text-white leading-tight drop-shadow-md">
+              Military-Grade Encryption
+            </span>
+          </div>
+          <p className="text-slate-400 text-[10px] font-medium tracking-widest drop-shadow-md">
+            &copy; 2026 ACES IT SECURITY
+          </p>
+        </div>
       </div>
 
     </main>
