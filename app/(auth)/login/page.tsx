@@ -8,7 +8,7 @@ import Link from 'next/link'
 
 export default function LoginPage() {
   return (
-    <main className="h-screen w-full relative overflow-hidden text-slate-50 font-sans">
+    <main className="h-screen w-full relative overflow-hidden text-slate-50 font-sans flex flex-col justify-between">
       {/* Background Image (covers entire screen) */}
       <div className="absolute inset-0 z-0">
         <Image 
@@ -22,42 +22,62 @@ export default function LoginPage() {
         <div className="absolute inset-0 bg-black/70" />
       </div>
 
-      {/* Main Content Container */}
-      <div className="relative z-10 w-full h-full flex flex-col lg:flex-row items-center justify-between p-6 sm:p-12 lg:p-24">
+      {/* Scrollable container for mobile to ensure form fits, though we try to fit full screen */}
+      <div className="relative z-10 w-full h-full flex flex-col lg:flex-row items-center justify-center lg:justify-between p-6 sm:p-12 lg:p-24 overflow-y-auto lg:overflow-hidden lg:pb-32">
         
-        {/* LEFT SIDE */}
-        <div className="hidden lg:flex flex-col justify-between h-full w-full max-w-2xl text-left">
+        {/* =========================================================================
+            LEFT COLUMN (Desktop) / TOP STACK (Mobile) 
+            ========================================================================= */}
+        <div className="flex flex-col items-center text-center lg:items-start lg:text-left justify-between h-auto lg:h-full w-full max-w-2xl mb-12 lg:mb-0">
           
-          {/* Top Left Branding */}
-          <div className="flex items-center gap-4">
+          {/* ---- BRANDING ---- */}
+          {/* Desktop Branding (hidden on mobile) */}
+          <div className="hidden lg:flex items-center gap-4 mb-24">
             <div className="w-16 h-16 rounded-full overflow-hidden border border-white/20 bg-white flex items-center justify-center shadow-lg">
               <Image src="/ac.png" alt="School Logo" width={56} height={56} className="object-contain" />
             </div>
             <div className="flex flex-col">
-              <span className="text-2xl font-bold tracking-tight text-white leading-tight">ACES Panabo</span>
+              <span className="text-2xl font-bold tracking-tight text-white leading-tight drop-shadow-[0_0_8px_rgba(16,185,129,0.3)]">ACES Panabo</span>
               <span className="text-[#10B981] text-xs font-semibold tracking-widest uppercase">OBE Cycle Management</span>
             </div>
           </div>
 
-          {/* Main Headline */}
-          <div>
-            <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-[#10B981] shadow-[0_0_8px_#10B981]" />
-              <span className="text-[11px] font-semibold text-white tracking-widest uppercase">System Online & Secure</span>
+          {/* Mobile Branding (hidden on desktop) */}
+          <div className="flex lg:hidden flex-col items-center gap-4 mb-6">
+            <div className="w-20 h-20 rounded-full overflow-hidden border border-white/20 bg-white flex items-center justify-center shadow-lg">
+              <Image src="/ac.png" alt="School Logo" width={64} height={64} className="object-contain" priority />
             </div>
+            <div className="flex flex-col items-center text-center">
+              <h1 className="text-3xl font-bold tracking-tight text-white leading-tight drop-shadow-[0_0_8px_rgba(16,185,129,0.3)]">ACES Panabo</h1>
+              <span className="text-[#10B981] text-xs font-bold tracking-widest uppercase mt-1">OBE SYSTEM V2.0</span>
+            </div>
+          </div>
 
-            <h1 className="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              Empowering <br />
-              <span className="text-[#10B981]">Outcomes-Based</span> <br />
+          {/* Mobile-only Pills */}
+          <div className="flex lg:hidden items-center gap-3 mb-10 w-full justify-center">
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
+              <ShieldCheck className="w-4 h-4 text-[#10B981]" />
+              <span className="text-[11px] text-slate-100 font-medium tracking-wide uppercase">Secure Access</span>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
+              <Waypoints className="w-4 h-4 text-[#10B981]" />
+              <span className="text-[11px] text-slate-100 font-medium tracking-wide uppercase">Curriculum Mapping</span>
+            </div>
+          </div>
+
+          {/* ---- MAIN HEADLINE & TAGLINE ---- */}
+          <div className="w-full">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-4 lg:mb-6 leading-tight">
+              Empowering <br className="hidden lg:block"/>
+              <span className="text-[#10B981]">Outcomes-Based</span> <br className="hidden lg:block"/>
               Education.
             </h1>
-
-            <p className="text-slate-300 text-lg max-w-lg leading-relaxed mb-16">
+            <p className="text-slate-300 text-sm sm:text-base lg:text-lg max-w-lg leading-relaxed mb-8 lg:mb-16 mx-auto lg:mx-0">
               A unified platform for curriculum mapping, attainment tracking, real-time analytics, and institutional compliance.
             </p>
 
-            {/* Bottom feature row */}
-            <div className="grid grid-cols-3 gap-8 pb-4">
+            {/* Desktop-only feature row */}
+            <div className="hidden lg:grid grid-cols-3 gap-8">
               <div className="flex flex-col gap-3">
                 <div className="w-10 h-10 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-[#10B981]">
                   <Waypoints className="w-5 h-5" />
@@ -90,56 +110,41 @@ export default function LoginPage() {
             </div>
           </div>
           
-          <div className="flex items-center gap-2 text-slate-500 text-xs font-medium">
-            <ShieldCheck className="w-4 h-4 text-[#10B981]" />
-            &copy; {new Date().getFullYear()} ACES Panabo. All rights reserved.
-          </div>
+          <div className="hidden lg:block h-12" /> {/* Spacer */}
         </div>
 
-        {/* RIGHT SIDE (Login Form Wrapper) */}
-        <div className="w-full lg:w-[440px] flex-shrink-0 flex flex-col justify-center items-center lg:items-stretch h-full lg:h-auto">
+        {/* =========================================================================
+            RIGHT COLUMN (Desktop) / BOTTOM STACK (Mobile) 
+            ========================================================================= */}
+        <div className="w-full lg:w-[440px] flex-shrink-0 flex flex-col justify-center shadow-2xl z-10 lg:z-auto pb-16 lg:pb-0">
           
-          {/* Mobile Branding (Hidden on desktop) */}
-          <div className="lg:hidden flex flex-col items-center gap-5 mb-8 relative z-10 w-full pt-10">
-            <div className="w-[84px] h-[84px] rounded-3xl overflow-hidden border border-white/20 bg-white p-2 flex items-center justify-center shadow-2xl">
-              <Image src="/ac.png" alt="School Logo" width={70} height={70} className="object-contain" priority />
-            </div>
-            <div className="text-center">
-              <h1 className="text-3xl font-bold tracking-tight text-white mb-1.5">ACES Panabo</h1>
-              <p className="text-[#10B981] text-xs font-bold tracking-widest uppercase">OBE Cycle Management</p>
-            </div>
-          </div>
-
-          {/* Floating Login Card */}
-          <div className="bg-[#0f141c] rounded-2xl border border-white/10 p-8 w-full shadow-2xl relative z-10">
+          {/* Glassmorphism Floating Login Card */}
+          <div className="bg-[#0a0d14]/80 backdrop-blur-sm rounded-2xl border border-white/10 p-6 sm:p-8 w-full max-w-[420px] mx-auto">
             
             <div className="text-center mb-8">
-              <div className="w-16 h-16 rounded-full border border-white/10 bg-transparent flex items-center justify-center mx-auto mb-6">
-                <Lock className="w-7 h-7 text-[#10B981]" />
-              </div>
               <h2 className="text-2xl font-semibold text-white mb-2 tracking-tight">Welcome Back</h2>
               <p className="text-slate-400 text-sm">Sign in to continue to ACES OBE Portal</p>
             </div>
 
             <LoginFormWrapper />
 
-            {/* Desktop Trust row (inside or below card) */}
-            <div className="mt-8 pt-8 border-t border-white/5">
-              <div className="hidden lg:flex justify-between items-center text-center">
-                <div className="flex flex-col items-center gap-2 opacity-60">
+            {/* Trust row inside card */}
+            <div className="mt-8 pt-8 border-t border-white/10">
+              <div className="flex justify-between items-center text-center px-2">
+                <div className="flex flex-col items-center gap-2">
                   <Lock className="w-4 h-4 text-[#10B981]" />
-                  <span className="text-[10px] text-white">AES-256<br/>Encryption</span>
+                  <span className="text-[10px] text-slate-300 font-medium">AES-256<br/>Encryption</span>
                 </div>
-                <div className="flex flex-col items-center gap-2 opacity-60">
+                <div className="flex flex-col items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-[#10B981]" />
-                  <span className="text-[10px] text-white">Faculty<br/>Verified Access</span>
+                  <span className="text-[10px] text-slate-300 font-medium">Faculty<br/>Verified Access</span>
                 </div>
-                <div className="flex flex-col items-center gap-2 opacity-60">
+                <div className="flex flex-col items-center gap-2">
                   <Zap className="w-4 h-4 text-[#10B981]" />
-                  <span className="text-[10px] text-white">Fast & Secure<br/>Access</span>
+                  <span className="text-[10px] text-slate-300 font-medium">Fast & Secure<br/>Access</span>
                 </div>
               </div>
-              <div className="text-center mt-6 hidden lg:block">
+              <div className="text-center mt-6">
                 <Link href="#" className="inline-flex items-center gap-2 text-xs text-slate-400 hover:text-white transition-colors group">
                   <HelpCircle className="w-4 h-4 text-[#10B981]" />
                   Need help signing in? <span className="text-[#10B981] group-hover:text-emerald-400 transition-colors">Contact IT Support ›</span>
@@ -150,6 +155,20 @@ export default function LoginPage() {
         </div>
 
       </div>
+
+      {/* =========================================================================
+          FOOTER (Both views) 
+          ========================================================================= */}
+      <div className="fixed bottom-0 left-0 right-0 p-4 sm:p-6 z-20 flex flex-col items-center justify-center pointer-events-none text-center bg-gradient-to-t from-black/50 to-transparent">
+        <div className="flex items-center gap-2 text-[#10B981] mb-1">
+          <Lock className="w-3.5 h-3.5" />
+          <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white shadow-black drop-shadow-md">Military-Grade Encryption</span>
+        </div>
+        <p className="text-slate-300 text-[10px] font-semibold tracking-wider font-mono drop-shadow-md">
+          &copy; 2026 ACES IT SECURITY
+        </p>
+      </div>
+
     </main>
   )
 }
