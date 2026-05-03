@@ -1,195 +1,193 @@
-// app/(auth)/login/page.tsx
+﻿// app/(auth)/login/page.tsx
 'use client'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { Headphones, Shield, ShieldCheck, Zap, Lock, ArrowRight, Waypoints } from 'lucide-react'
 import { LoginFormWrapper } from './_components/login-form-wrapper'
-import { ShieldCheck, Layers, BarChart } from 'lucide-react'
 
 export default function LoginPage() {
   return (
-    <main className="min-h-screen flex bg-app-bg overflow-hidden relative">
-      {/* Immersive Animated Background */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-0 left-0 w-full h-full bg-noise" />
-        
-        {/* Animated Blobs */}
-        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-brand/20 blur-[120px] rounded-full animate-blob mix-blend-screen" />
-        <div className="absolute top-[20%] right-[-10%] w-[40vw] h-[40vw] bg-emerald-500/10 blur-[100px] rounded-full animate-blob animation-delay-2000 mix-blend-screen" />
-        <div className="absolute bottom-[-20%] left-[20%] w-[60vw] h-[60vw] bg-teal-500/10 blur-[150px] rounded-full animate-blob animation-delay-4000 mix-blend-screen" />
-        
-        {/* Grid Overlay */}
-        <div className="absolute inset-0 bg-grid opacity-30 mask-image:linear-gradient(to_bottom,transparent,black,transparent)" />
-      </div>
+    <main className="min-h-screen w-full flex bg-[#020617] text-slate-50 font-sans overflow-hidden">
+      {/* LEFT SIDE (55%) */}
+      <div className="hidden lg:flex w-[55%] relative flex-col justify-between p-12 lg:p-16 xl:p-24 z-10 group overflow-hidden border-r border-[rgba(255,255,255,0.05)]">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/loginbg.png" 
+            alt="Campus Background" 
+            fill 
+            className="object-cover object-center opacity-30 mix-blend-luminosity scale-105 transition-transform duration-[20s] group-hover:scale-100"
+            priority
+          />
+          <div className="absolute inset-0 bg-[#020617]/70" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#020617]/90 via-[#020617]/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-[#020617]/50" />
+          {/* Soft green ambient lighting */}
+          <div className="absolute bottom-[-10%] left-[-10%] w-[60%] h-[60%] bg-[#10B981]/10 blur-[150px] rounded-full pointer-events-none" />
+          <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none" />
+        </div>
 
-      {/* Left: Branding Hero (Desktop) */}
-      <motion.div 
-        initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 1, x: 0 }}
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] } as any}
-        className="hidden lg:flex lg:w-[55%] relative flex-col justify-between p-16 border-r border-white/5 bg-black/40 backdrop-blur-3xl z-10"
-      >
-        <div className="relative z-10 flex flex-col h-full">
-          {/* Header */}
-          <div className="flex items-center gap-5 mb-auto">
-            <div className="relative w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center shadow-[0_0_40px_rgba(16,185,129,0.2)] group overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-brand/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <Image src="/ac.png" alt="Institutional Logo" width={44} height={44} className="object-contain relative z-10 transition-transform duration-700 group-hover:scale-110" priority />
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-3">
-                ACES Panabo
-                <span className="text-[10px] bg-brand/20 text-emerald-400 px-2.5 py-1 rounded-full font-mono uppercase tracking-widest border border-brand/30 shadow-[0_0_10px_rgba(16,185,129,0.2)]">v2.0</span>
-              </h1>
-              <p className="text-xs text-brand font-mono tracking-[0.2em] uppercase mt-1">OBE Cycle Management</p>
-            </div>
+        {/* Top left branding */}
+        <div className="relative z-10 flex items-center gap-4">
+          <div className="w-12 h-12 rounded-full overflow-hidden border border-[rgba(255,255,255,0.1)] shadow-[0_0_20px_rgba(16,185,129,0.15)] flex-shrink-0 bg-black">
+            <Image src="/ac.png" alt="School Logo" width={48} height={48} className="object-contain w-full h-full p-1" />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xl font-bold tracking-tight text-white leading-tight">ACES Panabo</span>
+            <span className="text-[#94A3B8] text-xs font-medium tracking-[0.15em] uppercase">OBE Cycle Management</span>
+          </div>
+        </div>
+
+        {/* Main hero content */}
+        <div className="relative z-10 max-w-2xl mt-auto pb-20 pt-20">
+          {/* Status Pill */}
+          <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] mb-10 backdrop-blur-md">
+            <span className="w-2 h-2 rounded-full bg-[#10B981] shadow-[0_0_8px_#10B981] animate-pulse" />
+            <span className="text-[11px] font-semibold text-white tracking-widest uppercase">System Online & Secure</span>
           </div>
 
-          {/* Main Hero Content */}
-          <div className="relative z-10 max-w-xl my-auto">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md"
-            >
-              <span className="w-2 h-2 rounded-full bg-brand animate-pulse" />
-              <span className="text-xs font-medium text-emerald-100 tracking-wide">System Online & Secure</span>
-            </motion.div>
+          {/* Main Headline */}
+          <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tighter text-[#F8FAFC] mb-8 leading-[1.05]">
+            Empowering <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-[#10B981] to-teal-400 drop-shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+              Outcomes-Based
+            </span> <br />
+            Education.
+          </h1>
 
-            <motion.h2 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="text-6xl font-extrabold tracking-tighter text-white mb-6 leading-[1.05]"
-            >
-              Empowering <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-brand to-teal-400 text-glow">
-                Outcomes-Based
-              </span> <br />
-              Education.
-            </motion.h2>
+          <p className="text-[#94A3B8] text-lg lg:text-xl font-light leading-relaxed max-w-xl mb-16">
+            A unified platform for curriculum mapping, attainment tracking, real-time analytics, and institutional compliance.
+          </p>
 
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-lg text-emerald-100/70 leading-relaxed mb-12 max-w-lg font-light"
-            >
-              A high-performance, institutional-grade platform engineered for seamless curriculum mapping, real-time attainment analytics, and compliance.
-            </motion.p>
-            
-            {/* Feature Cards Showcase */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="grid grid-cols-2 gap-4"
-            >
-              {[
-                { icon: Layers, title: 'Smart Mapping', desc: 'PEO, PLO, and CLO alignment made effortless.' },
-                { icon: BarChart, title: 'Live Analytics', desc: 'Real-time attainment tracking & visualization.' },
-              ].map((feature, i) => (
-                <div key={i} className="glass-panel p-5 rounded-2xl flex flex-col gap-3 group hover:border-brand/30 transition-colors">
-                  <div className="w-10 h-10 rounded-xl bg-brand/10 flex items-center justify-center text-brand group-hover:scale-110 transition-transform">
-                    <feature.icon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-white font-bold text-sm">{feature.title}</h3>
-                    <p className="text-white/50 text-xs mt-1 leading-relaxed">{feature.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Footer */}
-          <div className="mt-auto flex items-center justify-between border-t border-white/5 pt-8">
-            <div className="text-[10px] text-white/40 font-mono tracking-widest uppercase">
-              &copy; {new Date().getFullYear()} ACES Polytechnic College
+          {/* Bottom feature row */}
+          <div className="grid grid-cols-3 gap-8">
+            {/* Feature 1 */}
+            <div className="flex flex-col gap-4">
+              <div className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.03)] flex items-center justify-center text-[#10B981] shadow-[0_0_15px_rgba(16,185,129,0.05)] backdrop-blur-sm">
+                <Waypoints className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="text-white text-sm font-semibold mb-1.5">Smart Mapping</h3>
+                <p className="text-[#94A3B8] text-xs leading-relaxed">Align PLOs, CLOs and curriculums effortlessly.</p>
+              </div>
             </div>
-            <div className="flex gap-4">
-               {['CHED', 'TESDA', 'DPO'].map((badge) => (
-                  <span key={badge} className="text-[10px] font-bold text-white/30 tracking-widest uppercase">
-                    {badge}
-                  </span>
-               ))}
+            {/* Feature 2 */}
+            <div className="flex flex-col gap-4">
+              <div className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.03)] flex items-center justify-center text-[#10B981] shadow-[0_0_15px_rgba(16,185,129,0.05)] backdrop-blur-sm">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-white text-sm font-semibold mb-1.5">Live Analytics</h3>
+                <p className="text-[#94A3B8] text-xs leading-relaxed">Track attainment and performance in real-time.</p>
+              </div>
+            </div>
+            {/* Feature 3 */}
+            <div className="flex flex-col gap-4">
+              <div className="w-10 h-10 rounded-full border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.03)] flex items-center justify-center text-[#10B981] shadow-[0_0_15px_rgba(16,185,129,0.05)] backdrop-blur-sm">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="text-white text-sm font-semibold mb-1.5">Secure & Reliable</h3>
+                <p className="text-[#94A3B8] text-xs leading-relaxed">Military-grade encryption for your peace of mind.</p>
+              </div>
             </div>
           </div>
         </div>
-      </motion.div>
 
-      {/* Right: Login Form (Mobile & Desktop) */}
-      <div className="flex-1 flex flex-col justify-center relative z-20 bg-app-bg lg:bg-transparent">
-        {/* Mobile-only background overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-app-bg to-app-bg lg:hidden pointer-events-none z-[-1]" />
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full max-w-[440px] mx-auto px-6 sm:px-8 relative"
-        >
-          {/* Mobile Branding & Rich Visuals */}
-          <div className="lg:hidden flex flex-col items-center text-center mb-10 pt-10">
-            <motion.div 
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.5, type: 'spring' }}
-              className="relative w-20 h-20 bg-app-surface/50 backdrop-blur-xl border border-white/10 rounded-3xl flex items-center justify-center shadow-[0_20px_40px_rgba(0,0,0,0.5)] mb-6 group"
-            >
-              <div className="absolute inset-0 bg-brand/20 rounded-3xl animate-pulse" />
-              <Image src="/ac.png" alt="Institutional Logo" width={50} height={50} className="object-contain relative z-10" priority />
-            </motion.div>
-            <h1 className="text-4xl font-extrabold tracking-tight text-white mb-2 text-glow">ACES Panabo</h1>
-            <p className="text-sm text-brand font-mono uppercase tracking-[0.2em] font-bold">OBE System v2.0</p>
-            
-            {/* Mobile Feature Pills */}
-            <div className="flex flex-wrap justify-center gap-2 mt-6">
-              {[
-                { icon: ShieldCheck, text: 'Secure Access' },
-                { icon: Layers, text: 'Curriculum Mapping' }
-              ].map((pill, i) => (
-                <span key={i} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-emerald-100 text-[10px] font-medium tracking-wide">
-                  <pill.icon className="w-3 h-3 text-brand" />
-                  {pill.text}
-                </span>
-              ))}
+        {/* Bottom left footer */}
+        <div className="relative z-10 border-t border-[rgba(255,255,255,0.05)] pt-6">
+          <p className="text-[#94A3B8] text-xs font-medium">&copy; 2024 ACES Panabo. All rights reserved.</p>
+        </div>
+      </div>
+
+      {/* RIGHT SIDE (45%) */}
+      <div className="w-full lg:w-[45%] flex flex-col justify-center items-center relative z-20 px-6 sm:px-12 py-12">
+        {/* Mobile Background */}
+        <div className="absolute inset-0 z-0 lg:hidden">
+           <Image src="/loginbg.png" alt="Campus" fill className="object-cover opacity-20" priority />
+           <div className="absolute inset-0 bg-[#020617]/90 backdrop-blur-xl" />
+        </div>
+
+        {/* Mobile Branding */}
+        <div className="lg:hidden flex flex-col items-center gap-4 mb-10 relative z-10">
+          <div className="w-16 h-16 rounded-full overflow-hidden border border-[rgba(255,255,255,0.1)] shadow-[0_0_20px_rgba(16,185,129,0.2)] bg-black p-1">
+            <Image src="/ac.png" alt="School Logo" width={64} height={64} className="object-contain w-full h-full" />
+          </div>
+          <div className="text-center">
+            <h1 className="text-2xl font-bold tracking-tight text-white mb-1">ACES Panabo</h1>
+            <p className="text-[#10B981] text-xs font-medium tracking-widest uppercase">OBE Portal</p>
+          </div>
+        </div>
+
+        <div className="relative z-10 w-full max-w-[420px]">
+          {/* Card */}
+          <div className="w-full bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.08)] rounded-[28px] p-8 sm:p-10 shadow-[0_30px_60px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+            {/* Top icon */}
+            <div className="w-12 h-12 rounded-full border border-[#10B981]/20 bg-[#10B981]/10 flex items-center justify-center mb-8 shadow-[0_0_20px_rgba(16,185,129,0.15)] mx-auto relative">
+              <div className="absolute inset-0 rounded-full bg-[#10B981]/20 blur-md animate-pulse" />
+              <Lock className="w-5 h-5 text-[#10B981] relative z-10" />
             </div>
-          </div>
 
-          {/* Desktop Form Header */}
-          <div className="hidden lg:block mb-10 text-center lg:text-left">
-            <h2 className="text-4xl font-extrabold tracking-tight text-white">Authentication</h2>
-            <p className="text-sm text-white/50 mt-3 font-light">Secure access for ACES faculty and administrators.</p>
-          </div>
+            {/* Heading */}
+            <div className="text-center mb-8">
+              <h2 className="text-[28px] font-bold text-[#F8FAFC] mb-2 tracking-tight">Welcome Back</h2>
+              <p className="text-[#94A3B8] text-sm">Sign in to continue to ACES OBE Portal</p>
+            </div>
 
-          {/* Form Container - Glassmorphism */}
-          <div className="glass-panel p-8 sm:p-10 rounded-[2rem] relative overflow-hidden group">
-            {/* Animated border gradient */}
-            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-brand to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
-            
+            {/* Login Form component handles the fields and submit button */}
             <LoginFormWrapper />
+
+            {/* Content Divider */}
+            <div className="relative mt-8 mb-8">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-[rgba(255,255,255,0.08)]"></div>
+              </div>
+              <div className="relative flex justify-center text-xs">
+                <span className="bg-[#020617] lg:bg-transparent px-2 text-[#94A3B8] lg:bg-[#020617]">Secured and trusted by ACES</span>
+              </div>
+            </div>
+
+            {/* Trust row */}
+            <div className="grid grid-cols-3 gap-2">
+              <div className="flex flex-col items-center text-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/5">
+                  <Lock className="w-3.5 h-3.5 text-[#10B981]" />
+                </div>
+                <span className="text-[10px] text-[#94A3B8] font-medium leading-tight">AES-256<br/>Encryption</span>
+              </div>
+              <div className="flex flex-col items-center text-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/5">
+                  <Shield className="w-3.5 h-3.5 text-[#10B981]" />
+                </div>
+                <span className="text-[10px] text-[#94A3B8] font-medium leading-tight">Faculty<br/>Verified</span>
+              </div>
+              <div className="flex flex-col items-center text-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/5">
+                  <Zap className="w-3.5 h-3.5 text-[#10B981]" />
+                </div>
+                <span className="text-[10px] text-[#94A3B8] font-medium leading-tight">Fast &<br/>Secure</span>
+              </div>
+            </div>
           </div>
 
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 1 }}
-            className="mt-10 flex flex-col items-center gap-4"
-          >
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-brand/50" />
-              <p className="text-center text-white/30 text-[10px] font-mono tracking-[0.2em] uppercase">
-                Military-Grade Encryption
-              </p>
+          {/* Bottom support card */}
+          <div className="mt-6 bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] rounded-2xl p-4 flex items-center justify-between hover:bg-[rgba(255,255,255,0.04)] hover:border-[rgba(255,255,255,0.1)] transition-all cursor-pointer group">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-full bg-[#10B981]/10 flex items-center justify-center border border-[#10B981]/20">
+                <Headphones className="w-4 h-4 text-[#10B981] group-hover:scale-110 transition-transform" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[11px] text-[#94A3B8] uppercase tracking-wider font-semibold mb-0.5">Need help signing in?</span>
+                <span className="text-sm font-medium text-[#F8FAFC]">Contact IT Support</span>
+              </div>
             </div>
-            <p className="text-center text-white/20 text-[9px] font-mono tracking-widest uppercase lg:hidden">
-              &copy; {new Date().getFullYear()} ACES IT Security
-            </p>
-          </motion.div>
-        </motion.div>
+            <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#10B981]/20 transition-colors">
+              <ArrowRight className="w-4 h-4 text-[#94A3B8] group-hover:text-[#10B981] group-hover:translate-x-0.5 transition-all" />
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   )
