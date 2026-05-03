@@ -125,7 +125,7 @@ export default function LoginPage() {
       {/* =========================================================================
           GLOBAL FOOTER (Fixed at absolute bottom center)
           ========================================================================= */}
-      <div className="absolute bottom-6 md:bottom-8 left-0 w-full text-center z-20 pointer-events-none">
+      <div className="absolute bottom-2 sm:bottom-4 md:bottom-6 left-0 w-full text-center z-20 pointer-events-none">
         <div className="flex flex-col items-center justify-center gap-1.5 md:gap-2">
           <div className="flex items-center justify-center gap-1.5 text-[#10B981]">
             <Lock className="w-3.5 h-3.5 md:w-4 md:h-4 flex-shrink-0" />
