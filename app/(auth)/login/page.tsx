@@ -18,7 +18,8 @@ export default function LoginPage() {
       <motion.div 
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        transition={{ duration: 0.8, ease: 'easeOut' } as any}
         className="hidden lg:flex lg:w-1/2 relative flex-col justify-between p-16 border-r border-app-border bg-app-surface/30 backdrop-blur-sm"
       >
         <div className="absolute inset-0 bg-grid opacity-20" />

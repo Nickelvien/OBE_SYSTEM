@@ -25,7 +25,8 @@ const container = {
 
 const item = {
   hidden: { opacity: 0, y: 10 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } as any }
 }
 
 const loginSchema = z.object({
