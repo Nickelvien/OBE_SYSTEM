@@ -1,7 +1,6 @@
 // app/(auth)/login/page.tsx
 'use client'
 
-import type { Metadata } from 'next'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { LoginFormWrapper } from './_components/login-form-wrapper'

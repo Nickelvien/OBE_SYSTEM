@@ -5,7 +5,7 @@ import { useState, useCallback } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { signOut } from 'next-auth/react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import {
   LayoutDashboard, Users, BookOpen, ClipboardList, BarChart3,
@@ -14,7 +14,6 @@ import {
 } from 'lucide-react'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
-import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 import Image from 'next/image'
 
