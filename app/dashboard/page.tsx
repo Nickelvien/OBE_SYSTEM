@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 import {
   BookOpen, Users, BarChart3, AlertTriangle,
   Activity, FileText, GraduationCap,
-  TrendingUp, Clock, Target,
+  TrendingUp, Clock, Target, ChevronRight,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
